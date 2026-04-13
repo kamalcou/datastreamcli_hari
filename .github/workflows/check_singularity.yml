@@ -99,7 +99,7 @@ jobs:
         # chmod +x build.sh
         sudo singularity build datastream.sif datastream.def
         # ./build.sh
-        cd ..
+      
       
     - name: run datastream.sif with singularity 
       run: |
