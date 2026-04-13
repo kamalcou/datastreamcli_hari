@@ -44,7 +44,7 @@ jobs:
       with:
         fetch-depth: 2
 
-    - name: Install singularity
+    - name: update the ubuntu and install go 
       run: |
         sudo apt-get update && sudo apt-get install -y \
         build-essential \
@@ -59,6 +59,9 @@ jobs:
         wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz && \
         sudo tar -C /usr/local -xzvf go$VERSION.$OS-$ARCH.tar.gz && \
         rm go$VERSION.$OS-$ARCH.tar.gz
+    - name: Install singularity with go 
+      run: |
+        go version
 
     
 
