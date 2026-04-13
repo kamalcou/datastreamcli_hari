@@ -68,12 +68,11 @@ jobs:
       
     - name: run datastream.sif with singularity 
       run: |
-        cd singularity
-        singularity exec datastream.sif python3 -c "import datastreamcli; print('OK')"
+        singularity exec singularity/datastream.sif python3 -c "import datastreamcli; print('OK')"
         
     - name: run datastream help
       run: |
-       singularity exec datastream.sif /datastreamcli/scripts/datastream --help
+       singularity exec singularity/datastream.sif /datastreamcli/scripts/datastream --help
       
 
     
