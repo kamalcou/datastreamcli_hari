@@ -62,7 +62,7 @@ jobs:
         pwd
         cd singularity
         # chmod +x build.sh
-        singularity build --fakeroot datastream.sif datastream.def
+        sudo singularity build datastream.sif datastream.def
         # ./build.sh
       
       
