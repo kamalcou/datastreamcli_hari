@@ -69,16 +69,16 @@ jobs:
       run: |
         singularity exec singularity/datastream.sif python3 -c "import datastreamcli; print('OK')"
         
-    - name: run datastream run
+    - name: run datastream help
       run: |
-       # singularity exec singularity/datastream.sif /datastreamcli/scripts/datastream --help
-       singularity exec singularity/datastream.sif /datastreamcli/scripts/datastream -s 202006200100 \
-                    -e 202006210000 \
-                    -C NWM_RETRO_V3 \
-                    -d ./data/datastream_test_1 \
-                    -g https://ciroh-community-ngen-datastream.s3.us-east-1.amazonaws.com/resources/v2.2_hydrofabric/datastream-resources/VPU_09/config/nextgen_VPU_09.gpkg \
-                    -R ./configs/ngen/realization_sloth_nom_cfe_pet_troute.json \
-                    -n 4
+       singularity exec singularity/datastream.sif /datastreamcli/scripts/datastream --help
+       # # singularity exec singularity/datastream.sif /datastreamcli/scripts/datastream -s 202006200100 \
+       #              -e 202006210000 \
+       #              -C NWM_RETRO_V3 \
+       #              -d ./data/datastream_test_1 \
+       #              -g https://ciroh-community-ngen-datastream.s3.us-east-1.amazonaws.com/resources/v2.2_hydrofabric/datastream-resources/VPU_09/config/nextgen_VPU_09.gpkg \
+       #              -R ./configs/ngen/realization_sloth_nom_cfe_pet_troute.json \
+       #              -n 4
       
 
     
