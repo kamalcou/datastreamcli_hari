@@ -90,6 +90,8 @@ jobs:
         
         sudo apt-get install -y singularity-container
         singularity --version
+        singularity exec datastream.sif python3 -c "import datastreamcli; print('OK')"
+        singularity exec datastream.sif /datastreamcli/scripts/datastream --help
 
     
 
