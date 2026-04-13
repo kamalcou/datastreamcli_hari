@@ -92,7 +92,10 @@ jobs:
         singularity --version
     - name: Build singularity image file
       run: |
-       ./singularity/build.sh
+       cd singularity
+       chmod +x build.sh
+       ./build.sh
+       cd ..
       
     - name: run datastream.sif with singularity 
       run: |
