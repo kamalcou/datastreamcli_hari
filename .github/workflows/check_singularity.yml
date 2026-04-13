@@ -92,9 +92,9 @@ jobs:
         singularity --version
     - name: Build singularity image file
       run: |
-        singularity --version
-        ls -l $(which singularity)
-        sysctl kernel.unprivileged_userns_clone
+        # singularity --version
+        # ls -l $(which singularity)
+        # sysctl kernel.unprivileged_userns_clone
         cd singularity
         # chmod +x build.sh
         sudo singularity build datastream.sif datastream.def
@@ -103,7 +103,7 @@ jobs:
       
     - name: run datastream.sif with singularity 
       run: |
-        
+        cd singularity
         singularity exec datastream.sif python3 -c "import datastreamcli; print('OK')"
         singularity exec datastream.sif /datastreamcli/scripts/datastream --help
 
