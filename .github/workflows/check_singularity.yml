@@ -59,7 +59,6 @@ jobs:
         singularity --version
     - name: Build singularity image file
       run: |
-       
         cd singularity
         # chmod +x build.sh
         singularity build --fakeroot datastream.sif datastream.def
