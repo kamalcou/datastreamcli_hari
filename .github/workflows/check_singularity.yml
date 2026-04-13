@@ -92,10 +92,13 @@ jobs:
         singularity --version
     - name: Build singularity image file
       run: |
-       cd singularity
-       chmod +x build.sh
-       ./build.sh
-       cd ..
+        singularity --version
+        ls -l $(which singularity)
+        sysctl kernel.unprivileged_userns_clone
+        cd singularity
+        chmod +x build.sh
+        ./build.sh
+        cd ..
       
     - name: run datastream.sif with singularity 
       run: |
