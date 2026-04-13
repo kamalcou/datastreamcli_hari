@@ -96,8 +96,9 @@ jobs:
         ls -l $(which singularity)
         sysctl kernel.unprivileged_userns_clone
         cd singularity
-        chmod +x build.sh
-        ./build.sh
+        # chmod +x build.sh
+        sudo singularity build datastream.sif datastream.def
+        # ./build.sh
         cd ..
       
     - name: run datastream.sif with singularity 
