@@ -1,0 +1,57 @@
+name: Build, Push DataStream Singularity Containers on X86, ARM
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch name to build from (leave empty to use current branch)'
+        required: false
+        default: ''
+        type: string
+      force_build_deps:
+        description: 'Force build datastream-deps (provide tag version, e.g., 1.0.0)'
+        required: false
+        default: ''
+        type: string
+      force_build_ds:
+        description: 'Force build datastream (provide tag version, e.g., 1.0.0)'
+        required: false
+        default: ''
+        type: string
+  push:
+    branches:
+      - main
+      - Datastream_Workflows
+
+    paths:
+      - 'versions.yml'
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      build_deps: ${{ steps.changes.outputs.build_deps }}
+      build_ds: ${{ steps.changes.outputs.build_ds }}
+      deps_version: ${{ steps.changes.outputs.deps_version }}
+      ds_version: ${{ steps.changes.outputs.ds_version }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: Install yq
+      run: |
+        sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+        sudo chmod +x /usr/local/bin/yq
+
+    
+
+          docker manifest create awiciroh/datastream:latest \
+            --amend awiciroh/datastream:latest-x86 \
+            --amend awiciroh/datastream:latest-arm64
+          docker manifest push awiciroh/datastream:latest
