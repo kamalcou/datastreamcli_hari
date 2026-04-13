@@ -79,18 +79,21 @@ jobs:
     #     sudo make -C ./builddir install
     - name: Install singularity with apt-get
       run: |
-        sudo apt-get update && sudo apt-get install -y \
-        build-essential \
-        libssl-dev \
-        uuid-dev \
-        libgpgme11-dev \
-        squashfs-tools \
-        libseccomp-dev \
-        pkg-config
+        # sudo apt-get update && sudo apt-get install -y \
+        # build-essential \
+        # libssl-dev \
+        # uuid-dev \
+        # libgpgme11-dev \
+        # squashfs-tools \
+        # libseccomp-dev \
+        # pkg-config
         
         sudo apt-get install -y singularity-container
         singularity --version
-    
+    - name: Build singularity image file
+      run: |
+       ./singularity/build.sh
+      
     - name: run datastream.sif with singularity 
       run: |
         
